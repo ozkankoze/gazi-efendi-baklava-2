@@ -19,8 +19,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/hero.avif" type="image/avif" media="(min-width: 761px)">
-<link rel="preload" as="image" href="img/hero-m.avif" type="image/avif" media="(max-width: 760px)">
+<link rel="preload" as="image" type="image/avif" imagesrcset="img/hero-1440.avif 1440w, img/hero-2400.avif 2400w" imagesizes="100vw" media="(min-width: 1101px)">
+<link rel="preload" as="image" type="image/avif" imagesrcset="img/hero-m-600.avif 600w, img/hero-m.avif 896w" imagesizes="100vw" media="(max-width: 1100px)">
 <script type="application/ld+json">
 {
  "@context":"https://schema.org",
@@ -53,12 +53,13 @@ a{color:inherit}
 h1,h2,h3,p{margin:0}
 h1,h2{font-weight:600;letter-spacing:-.03em;line-height:1.08;text-wrap:balance}
 .wrap{max-width:1240px;margin:0 auto;padding:0 var(--pad)}
-.sec{padding:clamp(64px,8vw,104px) 0}
-.h2{font-size:clamp(28px,3.2vw,40px)}
-.sub{color:var(--muted);margin-top:10px;font-size:16.5px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 24px;border-radius:999px;font:600 15px/1 Manrope,sans-serif;text-decoration:none;border:1px solid transparent;transition:background .3s var(--e),color .3s var(--e),border-color .3s var(--e)}
+.sec{padding:clamp(56px,7vw,96px) 0}
+.h2{font-size:clamp(26px,2.8vw,36px);letter-spacing:-.025em}
+.sub{color:var(--muted);margin-top:8px;font-size:16px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;min-width:168px;padding:0 26px;border-radius:999px;font:600 15px/1 Manrope,sans-serif;letter-spacing:.005em;text-decoration:none;border:1px solid transparent;transition:background .3s var(--e),color .3s var(--e),border-color .3s var(--e)}
+.btn svg{transition:transform .3s var(--e)}.btn:hover svg{transform:translateX(3px)}
 .btn-p{background:var(--bordo);color:#fff}.btn-p:hover{background:var(--bordo2)}
-.btn-s{border-color:rgba(41,35,31,.28);color:var(--ink)}.btn-s:hover{border-color:var(--ink);background:var(--ink);color:var(--bg)}
+.btn-s{border-color:rgba(41,35,31,.22);color:var(--ink);background:rgba(250,247,242,.6)}.btn-s:hover{border-color:var(--bordo);color:var(--bordo);background:var(--bg)}
 :focus-visible{outline:2px solid var(--bordo);outline-offset:3px}
 
 /* nav */
@@ -72,79 +73,85 @@ h1,h2{font-weight:600;letter-spacing:-.03em;line-height:1.08;text-wrap:balance}
 .links{display:flex;gap:28px;font-size:15px;font-weight:500}
 .links a{text-decoration:none;transition:color .25s}
 .links a:hover{color:var(--bordo)}
-.nav .btn{min-height:38px;padding:0 18px;font-size:14px}
+.nav .btn{min-height:40px;min-width:0;padding:0 18px;font-size:14px}
 .burger{display:none;width:44px;height:44px;border:0;background:none;cursor:pointer;align-items:center;justify-content:center;color:var(--ink)}
 .burger i,.burger i::before,.burger i::after{display:block;width:20px;height:1.5px;background:currentColor;position:relative;transition:transform .3s var(--e),background .3s}
 .burger i::before,.burger i::after{content:'';position:absolute;left:0}
 .burger i::before{top:-6px}.burger i::after{top:6px}
 .open .burger i{background:transparent}.open .burger i::before{top:0;transform:rotate(45deg)}.open .burger i::after{top:0;transform:rotate(-45deg)}
 .drawer{display:none}
-@media(max-width:760px){
+@media(max-width:900px){
  .links,.right>.btn{display:none}.burger{display:flex}
  .drawer{display:block;max-height:0;overflow:hidden;transition:max-height .4s var(--e)}
  .open .drawer{max-height:420px}
  .drawer nav{padding:6px var(--pad) 22px;display:flex;flex-direction:column}
  .drawer a{padding:14px 0;border-bottom:1px solid var(--line);text-decoration:none;font-size:17px;font-weight:600}
- .drawer .btn{margin-top:18px;border-bottom:0;color:#fff;padding:0 24px}
+ .drawer .btn{margin-top:18px;border-bottom:0;color:#fff;padding:0 24px;min-height:52px}
 }
 
 /* hero */
-.hero{position:relative;height:calc(82vh - 68px);min-height:500px;max-height:820px;margin-top:68px;overflow:hidden;background:var(--beige)}
-.hero picture,.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 50%}
+.hero{position:relative;height:min(calc(84vh - 68px),760px);min-height:500px;margin-top:68px;overflow:hidden;background:#F1EADF}
+.hero picture,.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% 55%}
 .hero img{animation:zoom 1s var(--e) both}
-.hero .wrap{position:relative;z-index:1;height:100%;display:flex;align-items:center}
-.hero .txt{max-width:440px;animation:fade 1s var(--e) both}
-.hero h1{font-size:clamp(38px,4.6vw,60px);letter-spacing:-.035em}
-.hero p{margin-top:18px;font-size:18px;color:#4E4741;max-width:24em}
-.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-@keyframes zoom{from{transform:scale(1.04)}to{transform:none}}
+.hero .wrap{position:relative;z-index:1;height:100%;display:flex;align-items:center;max-width:none;padding-left:clamp(24px,5.5vw,96px)}
+.hero .txt{max-width:min(31vw,420px);animation:fade .9s var(--e) both}
+.hero h1{font-size:clamp(36px,4.2vw,58px);letter-spacing:-.035em;line-height:1.04}
+.hero p{margin-top:18px;font-size:clamp(16px,1.25vw,18px);line-height:1.55;color:#4E4741;max-width:20em}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+@keyframes zoom{from{transform:scale(1.035)}to{transform:none}}
 @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-@media(max-width:760px){
+@media(max-width:1100px){
  .hero{height:auto;min-height:0;max-height:none;background:var(--bg)}
- .hero picture{position:relative;height:52vh;min-height:320px}
- .hero .wrap{height:auto;padding-top:26px;padding-bottom:6px}
+ .hero picture{position:relative;height:auto;aspect-ratio:4/4.2;max-height:62vh}
+ .hero .txt{animation-name:fade}
+ .hero picture img{object-position:50% 60%}
+ .hero .wrap{height:auto;padding:28px var(--pad) 4px}
  .hero .txt{max-width:none}
- .hero .cta .btn{flex:1}
+ .hero p{max-width:none}
+ .hero h1{font-size:clamp(32px,8.6vw,40px)}
+ .hero p{font-size:16.5px}
+ .hero .cta{margin-top:24px;gap:10px}
+ .hero .cta .btn{flex:1 1 0;min-width:0;padding:0 16px}
 }
 
 /* lezzetler */
-.head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:36px}
-.arrows{display:flex;gap:8px}
-.arrows button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .25s,background .25s,color .25s,opacity .25s}
-.arrows button:hover:not(:disabled){border-color:var(--bordo);background:var(--bordo);color:#fff}
-.arrows button:disabled{opacity:.35;cursor:default}
-.track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 48px)/3);gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
-.track::-webkit-scrollbar{display:none}
-.item{scroll-snap-align:start}
-.item .ph{overflow:hidden;border-radius:6px;aspect-ratio:4/5;background:var(--beige)}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:32px}
+.track{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(14px,1.6vw,22px)}
+.item .ph{overflow:hidden;border-radius:4px;aspect-ratio:4/5;background:var(--beige)}
 .item img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--e)}
-.item:hover img{transform:scale(1.03)}
-.item h3{font-size:19px;font-weight:600;letter-spacing:-.01em;margin-top:16px;transition:color .25s}
+.item:hover img{transform:scale(1.035)}
+.item h3{font-size:17px;font-weight:600;letter-spacing:-.01em;margin-top:14px;transition:color .25s}
 .item:hover h3{color:var(--bordo)}
-.item p{color:var(--muted);font-size:15px;margin-top:2px}
-@media(max-width:760px){
- .arrows{display:none}
- .track{grid-auto-columns:76%;gap:14px;margin:0 calc(-1*var(--pad));padding:0 var(--pad);scroll-padding-inline:var(--pad)}
+.item p{color:var(--muted);font-size:14.5px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:1023px){
+ .track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;gap:14px;margin:0 calc(-1*var(--pad));padding:0 var(--pad) 4px;scroll-padding-inline:var(--pad)}
+ .track::-webkit-scrollbar{display:none}
+ .item{flex:0 0 36%;scroll-snap-align:start}
+ .swipe{display:inline-flex}
 }
-
+@media(max-width:600px){.item{flex-basis:68%}}
+.swipe{display:none;align-items:center;gap:6px;font-size:13.5px;color:var(--muted)}
 /* hakkımızda */
 .about{background:var(--beige)}
-.about .wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(32px,6vw,88px);align-items:center}
-.about .ph{border-radius:6px;overflow:hidden;aspect-ratio:5/4}
-.about .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
-.about p{color:#5E5852;font-size:17px;margin-top:18px;max-width:28em}
-@media(max-width:760px){.about .wrap{grid-template-columns:1fr;gap:26px}}
+.about .wrap{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(32px,6vw,96px);align-items:center}
+.about .ph{border-radius:4px;overflow:hidden;aspect-ratio:4/3}
+.about .ph img{width:100%;height:100%;object-fit:cover;object-position:60% 50%;transition:transform .9s var(--e)}
+.about .ph:hover img{transform:scale(1.025)}
+.about p{color:#5E5852;font-size:17px;line-height:1.65;margin-top:16px;max-width:26em}
+@media(max-width:900px){.about .wrap{grid-template-columns:1fr;gap:26px}}
 
 /* iletişim */
-.contact .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(32px,6vw,88px);align-items:center}
-.rows{margin:26px 0 30px;border-top:1px solid var(--line)}
-.rows div{display:grid;grid-template-columns:130px minmax(0,1fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font-size:16px}
+.contact .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(32px,6vw,96px);align-items:center}
+.rows{margin:24px 0 28px;border-top:1px solid var(--line)}
+.rows div{display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px;padding:15px 0;border-bottom:1px solid var(--line);font-size:16px;line-height:1.5}
 .rows dt{color:var(--muted)}
 .rows dd{margin:0;font-weight:600}
-.rows a{text-decoration:none}.rows a:hover{color:var(--bordo)}
-.contact .ph{border-radius:6px;overflow:hidden;aspect-ratio:4/3}
+.rows dd span{color:var(--muted);font-weight:500}
+.rows a{color:var(--bordo);text-decoration:underline;text-decoration-color:rgba(99,45,53,.3);text-underline-offset:4px}.rows a:hover{text-decoration-color:var(--bordo)}
+.cbtns{display:flex;flex-wrap:wrap;gap:12px}
+.contact .ph{border-radius:4px;overflow:hidden;aspect-ratio:4/3}
 .contact .ph img{width:100%;height:100%;object-fit:cover}
-@media(max-width:760px){.contact .wrap{grid-template-columns:1fr;gap:26px}.contact .ph{order:-1}.rows div{grid-template-columns:110px minmax(0,1fr)}.contact .btn{width:100%}}
+@media(max-width:900px){.contact .wrap{grid-template-columns:1fr;gap:26px}.contact .ph{order:-1}.rows div{grid-template-columns:96px minmax(0,1fr);gap:12px}.cbtns .btn{flex:1 1 0;min-width:0;padding:0 16px}}
 
 footer{border-top:1px solid var(--line);padding:26px 0;font-size:14px;color:var(--muted)}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px}
@@ -179,16 +186,16 @@ footer b{color:var(--ink);font-weight:600}
 <main id="ust">
  <section class="hero" aria-label="Gazi Efendi Baklava">
   <picture>
-   <source media="(max-width: 760px)" srcset="img/hero-m.avif" type="image/avif">
-   <source media="(max-width: 760px)" srcset="img/hero-m.webp" type="image/webp">
-   <source srcset="img/hero.avif" type="image/avif">
-   <img src="img/hero.webp" width="1344" height="752" alt="Beyaz tabakta, kesitinde bol Antep fıstığı görünen taze fıstıklı baklava" fetchpriority="high">
+   <source media="(max-width: 1100px)" srcset="img/hero-m-600.avif 600w, img/hero-m.avif 896w" sizes="100vw" type="image/avif">
+   <source media="(max-width: 1100px)" srcset="img/hero-m-600.webp 600w, img/hero-m.webp 896w" sizes="100vw" type="image/webp">
+   <source srcset="img/hero-1440.avif 1440w, img/hero-2400.avif 2400w" sizes="100vw" type="image/avif">
+   <img src="img/hero-1440.webp" srcset="img/hero-1440.webp 1440w, img/hero-2400.webp 2400w" sizes="100vw" width="1440" height="807" alt="Krem tabakta, kesitinde ince katları ve bol Antep fıstığı görünen taze fıstıklı baklava" fetchpriority="high" decoding="async">
   </picture>
   <div class="wrap">
    <div class="txt">
     <h1>Lezzetin En Güzel Hali.</h1>
     <p>Özenle hazırlanan baklavalar, her dilimde eşsiz bir lezzet.</p>
-    <div class="cta"><a class="btn btn-p" href="#lezzetler">Lezzetlerimiz</a><a class="btn btn-s" href="https://www.google.com/maps/search/?api=1&amp;query=Alemda%C4%9F+Gazi+Efendi+Baklava+%C3%87ekmek%C3%B6y">Yol Tarifi</a></div>
+    <div class="cta"><a class="btn btn-p" href="#lezzetler">Lezzetlerimiz <svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="btn btn-s" href="https://www.google.com/maps/search/?api=1&amp;query=Alemda%C4%9F+Gazi+Efendi+Baklava+%C3%87ekmek%C3%B6y">Yol Tarifi</a></div>
    </div>
   </div>
  </section>
@@ -197,24 +204,24 @@ footer b{color:var(--ink);font-weight:600}
   <div class="wrap">
    <div class="head rv">
     <div><h2 class="h2" id="lz">Lezzetlerimiz</h2><p class="sub">Her biri özenle hazırlanan özel tatlarımız.</p></div>
-    <div class="arrows"><button type="button" class="prev" aria-label="Önceki ürünler"><svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M12 4l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button type="button" class="next" aria-label="Sonraki ürünler"><svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M8 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+    <span class="swipe" aria-hidden="true">Kaydırın <svg width="16" height="16" viewBox="0 0 20 20"><path d="M4 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
    </div>
-   <div class="track rv" id="track" tabindex="0" aria-label="Ürünler">
-    <article class="item"><div class="ph"><picture><source srcset="img/fistikli.avif" type="image/avif"><img src="img/fistikli.webp" width="800" height="1000" alt="Taş tabakta dilimlenmiş fıstıklı baklava" loading="lazy" decoding="async"></picture></div><h3>Fıstıklı Baklava</h3><p>İnce yufka, bol Antep fıstığı.</p></article>
-    <article class="item"><div class="ph"><picture><source srcset="img/sobiyet.avif" type="image/avif"><img src="img/sobiyet.webp" width="800" height="1000" alt="Kaymaklı fıstıklı şöbiyet" loading="lazy" decoding="async"></picture></div><h3>Şöbiyet</h3><p>Kaymak ve fıstıkla.</p></article>
-    <article class="item"><div class="ph"><picture><source srcset="img/havuc.avif" type="image/avif"><img src="img/havuc.webp" width="800" height="1000" alt="Havuç dilimi baklava" loading="lazy" decoding="async"></picture></div><h3>Havuç Dilimi</h3><p>Fıstık dolu, çıtır uçlu.</p></article>
-    <article class="item"><div class="ph"><picture><source srcset="img/cevizli.avif" type="image/avif"><img src="img/cevizli.webp" width="800" height="1000" alt="Cevizli baklava" loading="lazy" decoding="async"></picture></div><h3>Cevizli Baklava</h3><p>Bol cevizli, ev usulü.</p></article>
-    <article class="item"><div class="ph"><picture><source srcset="img/sarma.avif" type="image/avif"><img src="img/sarma.webp" width="800" height="1000" alt="Kesitinde fıstık görünen fıstık sarma" loading="lazy" decoding="async"></picture></div><h3>Fıstık Sarma</h3><p>Yoğun fıstık dolgulu.</p></article>
+   <div class="track rv" id="track" role="list" aria-label="Ürünlerimiz">
+    <article class="item" role="listitem"><div class="ph"><picture><source srcset="img/fistikli.avif" type="image/avif"><img src="img/fistikli.webp" width="800" height="1000" alt="Taş tabakta dilimlenmiş fıstıklı baklava" loading="lazy" decoding="async"></picture></div><h3>Fıstıklı Baklava</h3><p>İnce yufka, bol Antep fıstığı.</p></article>
+    <article class="item" role="listitem"><div class="ph"><picture><source srcset="img/sobiyet.avif" type="image/avif"><img src="img/sobiyet.webp" width="800" height="1000" alt="Kaymaklı fıstıklı şöbiyet" loading="lazy" decoding="async"></picture></div><h3>Şöbiyet</h3><p>Kaymak ve fıstıkla.</p></article>
+    <article class="item" role="listitem"><div class="ph"><picture><source srcset="img/havuc.avif" type="image/avif"><img src="img/havuc.webp" width="800" height="1000" alt="Havuç dilimi baklava" loading="lazy" decoding="async"></picture></div><h3>Havuç Dilimi</h3><p>Fıstık dolu, çıtır uçlu.</p></article>
+    <article class="item" role="listitem"><div class="ph"><picture><source srcset="img/cevizli.avif" type="image/avif"><img src="img/cevizli.webp" width="800" height="1000" alt="Cevizli baklava" loading="lazy" decoding="async"></picture></div><h3>Cevizli Baklava</h3><p>Bol cevizli, ev usulü.</p></article>
+    <article class="item" role="listitem"><div class="ph"><picture><source srcset="img/sarma.avif" type="image/avif"><img src="img/sarma.webp" width="800" height="1000" alt="Kesitinde fıstık görünen fıstık sarma" loading="lazy" decoding="async"></picture></div><h3>Fıstık Sarma</h3><p>Yoğun fıstık dolgulu.</p></article>
    </div>
   </div>
  </section>
 
  <section class="sec about" id="hakkimizda" aria-labelledby="hk">
   <div class="wrap">
-   <div class="ph rv"><picture><source srcset="img/sabir.avif" type="image/avif"><img src="img/sabir.webp" width="800" height="1000" alt="Usta kâğıt inceliğinde yufkayı oklavayla açıyor" loading="lazy" decoding="async"></picture></div>
+   <div class="ph rv"><picture><source srcset="img/usta.avif" type="image/avif"><img src="img/usta.webp" width="1168" height="880" alt="Usta, atölyede bakır tepsideki taze baklavayı dilimliyor" loading="lazy" decoding="async"></picture></div>
    <div class="rv">
     <h2 class="h2" id="hk">İyi Baklava Kendini Belli Eder.</h2>
-    <p>Alemdağ'daki mağazamızda her tepsi, seçkin malzemeler ve usta eliyle hazırlanır. Acele etmeyiz; özeni ilk lokmada hissedersiniz.</p>
+    <p>Her tepsi, seçkin malzemeler ve usta eliyle hazırlanır. Özeni ilk lokmada hissedersiniz.</p>
    </div>
   </div>
  </section>
@@ -225,10 +232,10 @@ footer b{color:var(--ink);font-weight:600}
     <h2 class="h2" id="il">Bir Dilim İçin Bekleriz.</h2>
     <dl class="rows">
      <div><dt>Adres</dt><dd>Saray Cd. 70-72 D, Alemdağ<br>34794 Çekmeköy / İstanbul</dd></div>
-     <div><dt>Çalışma saatleri</dt><dd>Her gün 09:30 – 00:00</dd></div>
+     <div><dt>Saatler</dt><dd>09:30 – 00:00 <span>· Her gün</span></dd></div>
      <div><dt>Telefon</dt><dd><a href="tel:+905365599441">0536 559 94 41</a></dd></div>
     </dl>
-    <a class="btn btn-p" href="https://www.google.com/maps/search/?api=1&amp;query=Alemda%C4%9F+Gazi+Efendi+Baklava+%C3%87ekmek%C3%B6y">Yol Tarifi Al</a>
+    <div class="cbtns"><a class="btn btn-p" href="https://www.google.com/maps/search/?api=1&amp;query=Alemda%C4%9F+Gazi+Efendi+Baklava+%C3%87ekmek%C3%B6y"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="10" r="2.4" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>Yol Tarifi Al</a><a class="btn btn-s" href="tel:+905365599441">Hemen Arayın</a></div>
    </div>
    <div class="ph rv"><picture><source srcset="img/magaza.avif" type="image/avif"><img src="img/magaza.webp" width="1269" height="952" alt="Alemdağ Saray Caddesi'ndeki Gazi Efendi Baklava mağazası" loading="lazy" decoding="async"></picture></div>
   </div>
@@ -236,7 +243,7 @@ footer b{color:var(--ink);font-weight:600}
 </main>
 
 <footer>
- <div class="wrap"><span><b>Gazi Efendi Baklava</b> · Saray Cd. 70-72 D, Alemdağ, Çekmeköy / İstanbul</span><span>© 2026 Gazi Efendi Baklava</span></div>
+ <div class="wrap"><span><b>Gazi Efendi Baklava</b> · Saray Cd. 70-72 D, Alemdağ, Çekmeköy / İstanbul</span><span><a href="tel:+905365599441" style="color:inherit">0536 559 94 41</a> · © 2026 Gazi Efendi Baklava</span></div>
 </footer>
 
 <script>
@@ -250,12 +257,6 @@ footer b{color:var(--ink);font-weight:600}
  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
- const tr=document.getElementById('track'),pv=document.querySelector('.prev'),nx=document.querySelector('.next');
- const step=()=>tr.querySelector('.item').offsetWidth+24;
- const upd=()=>{pv.disabled=tr.scrollLeft<4;nx.disabled=tr.scrollLeft+tr.clientWidth>=tr.scrollWidth-4};
- pv.addEventListener('click',()=>tr.scrollBy({left:-step(),behavior:'smooth'}));
- nx.addEventListener('click',()=>tr.scrollBy({left:step(),behavior:'smooth'}));
- tr.addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
 }
 </script>
 </body>
